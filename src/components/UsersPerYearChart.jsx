@@ -4,7 +4,6 @@ import { endPoints } from '../constant/API';
 
 export const UsersPerYearChart = () => {
     const [data, setData] = useState([]);
-    const [selectYear, setSelectYear] = useState(2000);
 
     const getData = async (year) => {
         const res = await axios.get(`${endPoints.getByYear}/${year}`);
@@ -23,14 +22,6 @@ export const UsersPerYearChart = () => {
         setData(result);
     };
 
-    const handleChange = (e) => {
-        setSelectYear(e.target.value);
-    };
-
-    const handleSubmit = () => {
-        getData(selectYear);
-    };
-
     useEffect(() => {
         getAllYears();
     }, []);
@@ -38,9 +29,6 @@ export const UsersPerYearChart = () => {
     return (
         <div>
             <h3>Usuarios por año:</h3>
-
-            <input min="1980" max="2020" onChange={handleChange} />
-            <button onClick={handleSubmit}>Submit</button>
         </div>
     );
 };
