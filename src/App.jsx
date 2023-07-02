@@ -1,5 +1,6 @@
 import { UsersPerYearChart } from './components/UsersPerYearChart';
 import { TopCountries } from './components/TopCountries';
+import { WorldMap } from './components/WorldMap';
 
 function App() {
     return (
@@ -9,6 +10,7 @@ function App() {
             <UsersPerYearChart />
 
             <TopCountries />
+            <WorldMap />
         </>
     );
 }
