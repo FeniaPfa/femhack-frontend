@@ -1,8 +1,11 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { endPoints } from '../constant/API';
-import { AreaChart } from '@tremor/react';
+import { AreaChart, Card, Icon, Title } from '@tremor/react';
 import { years } from '../constant/years';
+import { Layout } from './Layout';
+import { UserGroupIcon } from '@heroicons/react/outline';
+import { convertToB } from '../constant/utils';
 
 export const UsersPerYearChart = () => {
     const [data, setData] = useState([]);
@@ -18,30 +21,29 @@ export const UsersPerYearChart = () => {
         setData(result);
     };
 
-    const dataFormatter = (number) => {
-        return Intl.NumberFormat('us').format(number).toString();
-    };
-
     useEffect(() => {
         getAllYears();
     }, []);
 
     return (
-        <div>
-            <h3>Usuarios por año:</h3>
-            {data.length > 0 && (
-                <AreaChart
-                    className="mt-6"
-                    data={data}
-                    index="year"
-                    categories={['Total Internet Users']}
-                    colors={['purple']}
-                    maxValue={data[data.length - 1]['Total Internet Users']}
-                    valueFormatter={dataFormatter}
-                    autoMinValue={true}
-                    // yAxisWidth={40}
-                />
-            )}
-        </div>
+        <Layout>
+            <Card className="drop-shadow-md" decoration="bottom" decorationColor="indigo">
+                <Title>
+                    <Icon icon={UserGroupIcon} variant="solid" color="purple" className="mr-3" />
+                    Internet users per year
+                </Title>
+                {data.length > 0 && (
+                    <AreaChart
+                        className="mt-6"
+                        data={data}
+                        index="year"
+                        categories={['Total Internet Users']}
+                        colors={['purple']}
+                        maxValue={data[data.length - 1]['Total Internet Users']}
+                        valueFormatter={convertToB}
+                    />
+                )}
+            </Card>
+        </Layout>
     );
 };
