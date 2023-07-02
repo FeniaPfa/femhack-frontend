@@ -1,5 +1,6 @@
 import { Card } from '@tremor/react';
 import { UsersPerYearChart } from './components/UsersPerYearChart';
+import { TopCountries } from './components/TopCountries';
 
 function App() {
     return (
@@ -8,6 +9,7 @@ function App() {
             <Card>
                 <UsersPerYearChart />
             </Card>
+            <TopCountries />
         </>
     );
 }

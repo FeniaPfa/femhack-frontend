@@ -4,4 +4,5 @@ export const endPoints = {
     countries: `${API}/countries`,
     getOneCountry: `${API}/country`,
     getByYear: `${API}/internet-users`,
+    getByYearAllCountries: `${API}/year`,
 };
