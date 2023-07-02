@@ -4,8 +4,10 @@ import { endPoints } from '../constant/API';
 import { MemoChart } from './WorldChart';
 import { Tooltip } from 'react-tooltip';
 import { years } from '../constant/years';
+import { Card, Flex, Select, SelectItem } from '@tremor/react';
 
 export const WorldMap = () => {
+    const [year, setYear] = useState(2020);
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
     const [tooltipContent, setTooltipContent] = useState('');
@@ -19,27 +21,26 @@ export const WorldMap = () => {
         setLoading(false);
     };
 
-    const handleSelect = (e) => {
-        getAllCountriesByYear(e.target.value);
-    };
-
     useEffect(() => {
-        getAllCountriesByYear(2020);
-    }, []);
+        getAllCountriesByYear(year);
+    }, [year]);
 
     return (
-        <div>
-            <p>Selesccionar año</p>
-            <label htmlFor="selectYear"></label>
-            <select name="selectYear" id="selectYear" defaultValue={2020} onChange={handleSelect}>
-                {years.map((item) => (
-                    <option key={item}>{item}</option>
-                ))}
-            </select>
-            <h2>World Map</h2>
+        <Card className="p-10">
+            <Flex className="space-x-8">
+                <h3 className="text-3xl font-bold">World Map</h3>
+                <Select onValueChange={setYear} value={year} placeholder="Year Selection" className="max-w-xs">
+                    {years.map((year) => (
+                        <SelectItem key={year} value={year}>
+                            {year}
+                        </SelectItem>
+                    ))}
+                </Select>
+            </Flex>
+
             {loading && <p>Loading...</p>}
             <MemoChart setTooltipContent={setTooltipContent} data={data} />
             <Tooltip id="my-tooltip">{tooltipContent}</Tooltip>
-        </div>
+        </Card>
     );
 };

@@ -12,13 +12,13 @@ const MapChart = ({ setTooltipContent, data }) => {
 
     const colorScale = scaleLinear()
         .domain([Math.min(...users), Math.max(...users)])
-        .range(['#cfebf4', '#169dd3']);
+        .range(['#c4b5fd', '#6d28d9']);
     return (
-        <div style={{ width: '1000px' }}>
+        <div className="text-center lg:-my-28">
             <ComposableMap
                 projectionConfig={{
                     rotate: [-10, 0, 0],
-                    scale: 150,
+                    scale: 147,
                 }}>
                 <Sphere stroke="#E4E5E6" strokeWidth={0.5} />
                 <Graticule stroke="#bcbdc9" strokeWidth={0.5} />
@@ -31,24 +31,27 @@ const MapChart = ({ setTooltipContent, data }) => {
                                 return (
                                     <Geography
                                         key={geo.rsmKey}
-                                        stroke="#d7f1fd"
+                                        stroke="#1e1b4b"
+                                        strokeWidth={0.2}
                                         geography={geo}
                                         data-tooltip-id="my-tooltip"
                                         style={{
                                             hover: {
-                                                fill: '#F53',
+                                                fill: '#6366f1',
                                             },
                                             pressed: {
-                                                fill: '#E42',
+                                                fill: '#6366f1',
                                             },
                                         }}
                                         onMouseEnter={() => {
-                                            setTooltipContent(`${geo.properties.name}: ${d ? numberFormatter(d?.users) : 0}`);
+                                            setTooltipContent(
+                                                `${geo.properties.name}: ${d ? numberFormatter(d?.users) : 'none'}`
+                                            );
                                         }}
                                         onMouseLeave={() => {
                                             setTooltipContent('');
                                         }}
-                                        fill={d ? colorScale(d['users']) : '#F5F4F6'}
+                                        fill={d ? colorScale(d['users']) : '#ddd6fe'}
                                     />
                                 );
                             })
