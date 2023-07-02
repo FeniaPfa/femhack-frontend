@@ -1,6 +1,6 @@
 import { Card } from '@tremor/react';
-import { UsersPerYearChart } from './components/UsersPerYearChart';
 import { WorldMap } from './components/WorldMap';
+import { UsersPerYearChart } from './components/UsersPerYearChart';
 
 function App() {
     return (
@@ -8,8 +8,8 @@ function App() {
             <h1 className="text-purple-500">Hola fem hack</h1>
             <Card>
                 <UsersPerYearChart />
-                <WorldMap />
             </Card>
+            <WorldMap />
         </>
     );
 }
