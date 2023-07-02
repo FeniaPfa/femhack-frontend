@@ -34,7 +34,7 @@ export const WorldMap = () => {
                 <Flex className="space-x-8">
                     <h3 className="text-3xl font-bold">
                         <Icon icon={MapIcon} variant="solid" color="purple" className="mr-3" />
-                        World Map
+                        World users per year
                     </h3>
                     <Select onValueChange={setYear} value={year} placeholder="Year Selection" className="max-w-xs">
                         {reverseArray(years).map((year) => (
