@@ -38,6 +38,7 @@ export const UsersPerYearChart = () => {
                     colors={['purple']}
                     maxValue={data[data.length - 1]['Total Internet Users']}
                     valueFormatter={dataFormatter}
+                    autoMinValue={true}
                     // yAxisWidth={40}
                 />
             )}
