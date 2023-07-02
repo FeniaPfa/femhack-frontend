@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { endPoints } from '../constant/API';
+import { AreaChart } from '@tremor/react';
+import { years } from '../constant/years';
 
 export const UsersPerYearChart = () => {
     const [data, setData] = useState([]);
@@ -8,18 +10,16 @@ export const UsersPerYearChart = () => {
     const getData = async (year) => {
         const res = await axios.get(`${endPoints.getByYear}/${year}`);
 
-        return { [year]: res.data.Data.Total };
+        return { 'Total Internet Users': res.data.Data.Total, year };
     };
-
-    const years = [];
-
-    for (let i = 1980; i <= 2020; i++) {
-        years.push(i);
-    }
 
     const getAllYears = async () => {
         const result = await Promise.all(years.map((item) => getData(item)));
         setData(result);
+    };
+
+    const dataFormatter = (number) => {
+        return Intl.NumberFormat('us').format(number).toString();
     };
 
     useEffect(() => {
@@ -29,6 +29,19 @@ export const UsersPerYearChart = () => {
     return (
         <div>
             <h3>Usuarios por año:</h3>
+            {data.length > 0 && (
+                <AreaChart
+                    className="mt-6"
+                    data={data}
+                    index="year"
+                    categories={['Total Internet Users']}
+                    colors={['purple']}
+                    maxValue={data[data.length - 1]['Total Internet Users']}
+                    valueFormatter={dataFormatter}
+                    autoMinValue={true}
+                    // yAxisWidth={40}
+                />
+            )}
         </div>
     );
 };
