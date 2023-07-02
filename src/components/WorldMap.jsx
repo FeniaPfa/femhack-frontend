@@ -1,11 +1,14 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { endPoints } from '../constant/API';
+import { MemoChart } from './WorldChart';
+import { Tooltip } from 'react-tooltip';
+import { years } from '../constant/years';
 
 export const WorldMap = () => {
-    const [year, setYear] = useState(2020);
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
+    const [tooltipContent, setTooltipContent] = useState('');
 
     const getAllCountriesByYear = async (year) => {
         setLoading(true);
@@ -16,6 +19,10 @@ export const WorldMap = () => {
         setLoading(false);
     };
 
+    const handleSelect = (e) => {
+        getAllCountriesByYear(e.target.value);
+    };
+
     useEffect(() => {
         getAllCountriesByYear(2020);
     }, []);
@@ -23,8 +30,16 @@ export const WorldMap = () => {
     return (
         <div>
             <p>Selesccionar año</p>
+            <label htmlFor="selectYear"></label>
+            <select name="selectYear" id="selectYear" defaultValue={2020} onChange={handleSelect}>
+                {years.map((item) => (
+                    <option key={item}>{item}</option>
+                ))}
+            </select>
             <h2>World Map</h2>
             {loading && <p>Loading...</p>}
+            <MemoChart setTooltipContent={setTooltipContent} data={data} />
+            <Tooltip id="my-tooltip">{tooltipContent}</Tooltip>
         </div>
     );
 };
