@@ -4,7 +4,7 @@ import { endPoints } from '../constant/API';
 import { MemoChart } from './WorldChart';
 import { Tooltip } from 'react-tooltip';
 import { years } from '../constant/years';
-import { Card, Flex, Icon, Select, SelectItem } from '@tremor/react';
+import { Card, Icon, Select, SelectItem } from '@tremor/react';
 import { reverseArray } from '../constant/utils';
 import { MapIcon } from '@heroicons/react/outline';
 
@@ -29,7 +29,7 @@ export const WorldMap = () => {
 
     return (
         <Card className="drop-shadow-md" decoration="bottom" decorationColor="indigo">
-            <Flex className="space-x-8">
+            <div className="space-x-8 flex md:justify-between md:flex-row flex-col gap-6 items-center">
                 <h3 className="text-3xl font-bold">
                     <Icon icon={MapIcon} variant="solid" color="purple" className="mr-3" />
                     World users per year
@@ -41,7 +41,7 @@ export const WorldMap = () => {
                         </SelectItem>
                     ))}
                 </Select>
-            </Flex>
+            </div>
 
             {loading && <p>Loading...</p>}
             <MemoChart setTooltipContent={setTooltipContent} data={data} />

@@ -44,7 +44,7 @@ export const TopCountries = () => {
     }, [selectedYear]);
     return (
         <Card className="my-10 drop-shadow-md" decoration="bottom" decorationColor="indigo">
-            <Flex className="space-x-8">
+            <div className="flex justify-between gap-6 md:flex-row flex-col items-center">
                 <Title>
                     <Icon icon={TrendingUpIcon} variant="solid" color="purple" className="mr-3" />
                     Top 10 countries
@@ -62,7 +62,7 @@ export const TopCountries = () => {
                         </SelectItem>
                     ))}
                 </Select>
-            </Flex>
+            </div>
             <Flex className="mt-8">
                 <Text>
                     <Bold>Country</Bold>

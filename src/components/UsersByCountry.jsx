@@ -52,23 +52,25 @@ export const UsersByCountry = () => {
 
     return (
         <Card className="my-10 drop-shadow-md" decoration="bottom" decorationColor="indigo">
-            <Title>
-                <Icon icon={ChartBarIcon} variant="solid" color="purple" className="mr-3" />
-                Internet users by country and year
-            </Title>
-            <Select
-                onValueChange={setSelectedCountry}
-                value={selectedCountry}
-                placeholder="Country Selection"
-                className="max-w-xs mt-3">
-                {countries
-                    ? countries.map((country, index) => (
-                          <SelectItem key={index} value={country}>
-                              {country}
-                          </SelectItem>
-                      ))
-                    : null}
-            </Select>
+            <div className="flex md:flex-row justify-between flex-col gap-6 items-center">
+                <Title>
+                    <Icon icon={ChartBarIcon} variant="solid" color="purple" className="mr-3" />
+                    Internet users by country and year
+                </Title>
+                <Select
+                    onValueChange={setSelectedCountry}
+                    value={selectedCountry}
+                    placeholder="Country Selection"
+                    className="max-w-xs mt-3">
+                    {countries
+                        ? countries.map((country, index) => (
+                              <SelectItem key={index} value={country}>
+                                  {country}
+                              </SelectItem>
+                          ))
+                        : null}
+                </Select>
+            </div>
             {Array.isArray(data) ? (
                 <BarChart
                     className="mt-6"

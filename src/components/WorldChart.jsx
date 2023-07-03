@@ -14,7 +14,7 @@ const MapChart = ({ setTooltipContent, data }) => {
         .domain([Math.min(...users), Math.max(...users)])
         .range(['#cffafe', '#6b21a8']);
     return (
-        <div className="text-center">
+        <div className="text-center px-6">
             <ComposableMap
                 projectionConfig={{
                     rotate: [-10, 0, 0],
