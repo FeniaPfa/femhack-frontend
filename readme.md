@@ -18,6 +18,11 @@ Future steps.
 ## 🔧 Installation
 
 -   Clone the repository
+<<<<<<< Updated upstream
+=======
+
+ 
+>>>>>>> Stashed changes
 -   Install dependencies
 
 ```bash

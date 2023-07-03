@@ -7,7 +7,7 @@ import { numberFormatter } from '../constant/utils'
 import { ChartBarIcon } from '@heroicons/react/outline'
 
 export const UsersByCountry = () => {
-  const [selectedCountry, setSelectedCountry] = useState('')
+  const [selectedCountry, setSelectedCountry] = useState('Chile')
   const [countries, setCountries] = useState([])
   const [data, setData] = useState([])
 
@@ -34,7 +34,7 @@ export const UsersByCountry = () => {
             `http://localhost:8080/country/${selectedCountry}`
           )
 
-          const formattedData = Object.keys(response.data.Data).map((year) => {
+          const formattedData = Object.keys(response.data.Data).filter(year=>Number(year >= 1989)).map((year) => {
             return {
               year: Number(year), // convert the year to a number
               'Users of internet':
