@@ -1,80 +1,121 @@
-import { useEffect, useState } from 'react';
-import { endPoints } from '../constant/API';
-import axios from 'axios';
-import { BarList, Bold, Card, Flex, Icon, Select, SelectItem, Text, Title } from '@tremor/react';
-import { Layout } from './Layout';
-import { numberFormatter, reverseArray } from '../constant/utils';
-import { years } from '../constant/years';
-import { TrendingUpIcon } from '@heroicons/react/outline';
+import { useEffect, useState, useRef } from 'react'
+import { endPoints } from '../constant/API'
+import axios from 'axios'
+import {
+  BarList,
+  Bold,
+  Card,
+  Flex,
+  Icon,
+  Select,
+  SelectItem,
+  Text,
+  Title,
+} from '@tremor/react'
+import { numberFormatter, reverseArray } from '../constant/utils'
+import { years } from '../constant/years'
+import { TrendingUpIcon } from '@heroicons/react/outline'
 
 export const TopCountries = () => {
-    const [loading, setLoading] = useState(false);
-    const [selectedYear, setSelectedYear] = useState(2020);
-    const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false)
+  const [selectedYear, setSelectedYear] = useState(2020)
+  const [data, setData] = useState([])
+  const [isVisible, setVisible] = useState(false)
+  const domRef = useRef()
 
-    const sortCountries = (arr) => {
-        const newArr = [...arr];
-        return newArr.sort((a, b) => b.value - a.value);
-    };
+  const sortCountries = (arr) => {
+    const newArr = [...arr]
+    return newArr.sort((a, b) => b.value - a.value)
+  }
 
-    const getAllCountriesByYear = async (year) => {
-        setLoading(true);
-        const res = await axios.get(`${endPoints.getByYearAllCountries}/${year}`);
-        const data = res.data.Data;
+  const getAllCountriesByYear = async (year) => {
+    setLoading(true)
+    const res = await axios.get(`${endPoints.getByYearAllCountries}/${year}`)
+    const data = res.data.Data
 
-        const formatedData = Object.keys(data).map((item) => ({ name: item, value: data[item].internet_users_number }));
-        const sortedData = sortCountries(formatedData).splice(0, 10);
-        setData(sortedData);
+    const formatedData = Object.keys(data).map((item) => ({
+      name: item,
+      value: data[item].internet_users_number,
+    }))
+    const sortedData = sortCountries(formatedData).splice(0, 10)
+    setData(sortedData)
 
-        setLoading(false);
-    };
+    setLoading(false)
+  }
 
-    const handleChange = () => {
-        getAllCountriesByYear(selectedYear);
-    };
-    // console.log(data);
+  const handleChange = () => {
+    getAllCountriesByYear(selectedYear)
+  }
+  // console.log(data);
 
-    useEffect(() => {
-        getAllCountriesByYear(2020);
-    }, []);
+  useEffect(() => {
+    getAllCountriesByYear(2020)
+  }, [])
 
-    useEffect(() => {
-        if (selectedYear) {
-            handleChange();
-        }
-    }, [selectedYear]);
-    return (
-        <Layout>
-            <Card className="my-10 drop-shadow-md" decoration="bottom" decorationColor="indigo">
-                <Flex className="space-x-8">
-                    <Title>
-                        <Icon icon={TrendingUpIcon} variant="solid" color="purple" className="mr-3" />
-                        Top 10 countries
-                    </Title>
-                    <Select
-                        onValueChange={setSelectedYear}
-                        value={selectedYear}
-                        placeholder="Year Selection"
-                        className="max-w-xs"
-                        // onChange={handleChange}
-                    >
-                        {reverseArray(years).map((category) => (
-                            <SelectItem key={category} value={category}>
-                                {category}
-                            </SelectItem>
-                        ))}
-                    </Select>
-                </Flex>
-                <Flex className="mt-8">
-                    <Text>
-                        <Bold>Country</Bold>
-                    </Text>
-                    <Text>
-                        <Bold>Users</Bold>
-                    </Text>
-                </Flex>
-                <BarList data={data} color="purple" className="mt-4" showAnimation={true} valueFormatter={numberFormatter} />
-            </Card>
-        </Layout>
-    );
-};
+  useEffect(() => {
+    if (selectedYear) {
+      handleChange()
+    }
+  }, [selectedYear])
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => setVisible(entry.isIntersecting))
+    })
+    observer.observe(domRef.current)
+    return () => observer.unobserve(domRef.current)
+  }, [])
+
+  return (
+    <Card
+      className="drop-shadow-md"
+      decoration="bottom"
+      decorationColor="indigo"
+    >
+      <div
+        className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}
+        ref={domRef}
+      >
+        <div className="flex justify-between gap-6 md:flex-row flex-col items-center">
+          <Title>
+            <Icon
+              icon={TrendingUpIcon}
+              variant="solid"
+              color="purple"
+              className="mr-3"
+            />
+            Top 10 countries
+          </Title>
+          <Select
+            onValueChange={setSelectedYear}
+            value={selectedYear}
+            placeholder="Year Selection"
+            className="max-w-xs"
+            // onChange={handleChange}
+          >
+            {reverseArray(years).map((category) => (
+              <SelectItem key={category} value={category}>
+                {category}
+              </SelectItem>
+            ))}
+          </Select>
+        </div>
+        <Flex className="mt-8">
+          <Text>
+            <Bold>Country</Bold>
+          </Text>
+          <Text>
+            <Bold>Users</Bold>
+          </Text>
+        </Flex>
+        <BarList
+          data={data}
+          color="purple"
+          className="mt-4"
+          showAnimation={true}
+          valueFormatter={numberFormatter}
+        />
+      </div>
+    </Card>
+  )
+}

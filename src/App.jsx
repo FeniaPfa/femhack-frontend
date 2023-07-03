@@ -1,16 +1,25 @@
-import { Card } from '@tremor/react';
 import { UsersPerYearChart } from './components/UsersPerYearChart';
 import { TopCountries } from './components/TopCountries';
+import { UsersByCountry } from './components/UsersByCountry';
+import { WorldMap } from './components/WorldMap';
+import { Hero } from './components/Hero';
+import { Layout } from './components/Layout';
+import { Fact } from './components/Fact';
 
 function App() {
     return (
-        <>
-            <h1 className="text-purple-500">Hola fem hack</h1>
-            <Card>
+        <div className="main h-full">
+            <Layout>
+                <Hero />
                 <UsersPerYearChart />
-            </Card>
-            <TopCountries />
-        </>
+                <Fact fact={1} />
+                <UsersByCountry />
+                <Fact fact={2} />
+                <TopCountries />
+                <Fact fact={3} />
+                <WorldMap />
+            </Layout>
+        </div>
     );
 }
 
