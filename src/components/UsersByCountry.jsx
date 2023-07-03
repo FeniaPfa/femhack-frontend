@@ -51,7 +51,7 @@ export const UsersByCountry = () => {
     }, [selectedCountry]);
 
     return (
-        <Card className="my-10 drop-shadow-md" decoration="bottom" decorationColor="indigo">
+        <Card className="drop-shadow-md" decoration="bottom" decorationColor="indigo">
             <div className="flex md:flex-row justify-between flex-col gap-6 items-center">
                 <Title>
                     <Icon icon={ChartBarIcon} variant="solid" color="purple" className="mr-3" />

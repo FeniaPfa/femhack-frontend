@@ -4,6 +4,7 @@ import { UsersByCountry } from './components/UsersByCountry';
 import { WorldMap } from './components/WorldMap';
 import { Hero } from './components/Hero';
 import { Layout } from './components/Layout';
+import { Fact } from './components/Fact';
 
 function App() {
     return (
@@ -11,9 +12,11 @@ function App() {
             <Layout>
                 <Hero />
                 <UsersPerYearChart />
-
+                <Fact fact={1} />
                 <UsersByCountry />
+                <Fact fact={2} />
                 <TopCountries />
+                <Fact fact={3} />
                 <WorldMap />
             </Layout>
         </div>
