@@ -3,16 +3,19 @@ import { TopCountries } from './components/TopCountries';
 import { UsersByCountry } from './components/UsersByCountry';
 import { WorldMap } from './components/WorldMap';
 import { Hero } from './components/Hero';
+import { Layout } from './components/Layout';
 
 function App() {
     return (
         <div className="main h-full">
-            <Hero />
-            <UsersPerYearChart />
+            <Layout>
+                <Hero />
+                <UsersPerYearChart />
 
-            <UsersByCountry />
-            <TopCountries />
-            <WorldMap />
+                <UsersByCountry />
+                <TopCountries />
+                <WorldMap />
+            </Layout>
         </div>
     );
 }
