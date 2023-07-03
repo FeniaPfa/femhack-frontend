@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { endPoints } from '../constant/API'
-import { Card, Title, BarChart, Select, SelectItem } from '@tremor/react'
+import { Card, Title, BarChart, Select, Icon, SelectItem } from '@tremor/react'
 import { Layout } from './Layout'
 import { numberFormatter } from '../constant/utils'
+import { ChartBarIcon } from '@heroicons/react/outline'
 
 export const UsersByCountry = () => {
   const [selectedCountry, setSelectedCountry] = useState('')
@@ -53,13 +54,24 @@ export const UsersByCountry = () => {
 
   return (
     <Layout>
-      <Card className="my-10 drop-shadow-md" decoration="bottom"
-      decorationColor="indigo">
-        <Title>Internet users by country and year</Title>
+      <Card
+        className="my-10 drop-shadow-md"
+        decoration="bottom"
+        decorationColor="indigo"
+      >
+        <Title>
+          <Icon
+            icon={ChartBarIcon}
+            variant="solid"
+            color="purple"
+            className="mr-3"
+          />
+          Internet users by country and year
+        </Title>
         <Select
           onValueChange={setSelectedCountry}
           value={selectedCountry}
-          placeholder="Year Selection"
+          placeholder="Country Selection"
           className="max-w-xs mt-3"
         >
           {countries
@@ -78,7 +90,7 @@ export const UsersByCountry = () => {
             categories={['Users of internet']} // this should be an array
             colors={['purple']}
             valueFormatter={numberFormatter}
-            yAxisWidth={40}
+            yAxisWidth={70}
             autoMinValue={true}
           />
         ) : (
