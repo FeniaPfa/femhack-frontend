@@ -1,7 +1,9 @@
 import heroimg from '../assets/header.svg';
-
+import {Fade} from 'react-awesome-reveal'
+ 
 export const Hero = () => {
     return (
+        <Fade>
         <div className="hero flex flex-col justify-between items-center gap-2 lg:flex-row py-6 md:py-20">
             <div className="flex flex-col gap-6 lg:items-start lg:w-5/12">
                 <h1 className="text-5xl font-bold">
@@ -18,5 +20,6 @@ export const Hero = () => {
             </div>
             <img src={heroimg} alt="Internet and people" className="md:w-7/12 w-full" />
         </div>
+        </Fade>
     );
 };
