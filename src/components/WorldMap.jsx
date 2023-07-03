@@ -4,8 +4,7 @@ import { endPoints } from '../constant/API';
 import { MemoChart } from './WorldChart';
 import { Tooltip } from 'react-tooltip';
 import { years } from '../constant/years';
-import { Card, Flex, Icon, Select, SelectItem } from '@tremor/react';
-import { Layout } from './Layout';
+import { Card, Icon, Select, SelectItem } from '@tremor/react';
 import { reverseArray } from '../constant/utils';
 import { MapIcon } from '@heroicons/react/outline';
 
@@ -29,26 +28,24 @@ export const WorldMap = () => {
     }, [year]);
 
     return (
-        <Layout>
-            <Card className="my-10 drop-shadow-md" decoration="bottom" decorationColor="indigo">
-                <Flex className="space-x-8">
-                    <h3 className="text-3xl font-bold">
-                        <Icon icon={MapIcon} variant="solid" color="purple" className="mr-3" />
-                        World users per year
-                    </h3>
-                    <Select onValueChange={setYear} value={year} placeholder="Year Selection" className="max-w-xs">
-                        {reverseArray(years).map((year) => (
-                            <SelectItem key={year} value={year}>
-                                {year}
-                            </SelectItem>
-                        ))}
-                    </Select>
-                </Flex>
+        <Card className="drop-shadow-md" decoration="bottom" decorationColor="indigo">
+            <div className="space-x-8 flex md:justify-between md:flex-row flex-col gap-6 items-center">
+                <h3 className="text-3xl font-bold">
+                    <Icon icon={MapIcon} variant="solid" color="purple" className="mr-3" />
+                    World users per year
+                </h3>
+                <Select onValueChange={setYear} value={year} placeholder="Year Selection" className="max-w-xs">
+                    {reverseArray(years).map((year) => (
+                        <SelectItem key={year} value={year}>
+                            {year}
+                        </SelectItem>
+                    ))}
+                </Select>
+            </div>
 
-                {loading && <p>Loading...</p>}
-                <MemoChart setTooltipContent={setTooltipContent} data={data} />
-                <Tooltip id="my-tooltip">{tooltipContent}</Tooltip>
-            </Card>
-        </Layout>
+            {loading && <p>Loading...</p>}
+            <MemoChart setTooltipContent={setTooltipContent} data={data} />
+            <Tooltip id="my-tooltip">{tooltipContent}</Tooltip>
+        </Card>
     );
 };
