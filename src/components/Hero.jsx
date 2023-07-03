@@ -16,7 +16,7 @@ export const Hero = () => {
                     <a href="#charts">Check the data!</a>
                 </button>
             </div>
-            <img src={heroimg} className="md:w-7/12 w-full" />
+            <img src={heroimg} alt="Internet and people" className="md:w-7/12 w-full" />
         </div>
     );
 };
