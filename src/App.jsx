@@ -1,17 +1,17 @@
-import { Card } from '@tremor/react';
 import { UsersPerYearChart } from './components/UsersPerYearChart';
 import { TopCountries } from './components/TopCountries';
-import { Hero } from './components/Hero';
+import { WorldMap } from './components/WorldMap';
 
 function App() {
     return (
-        <div className="main">
-            <Hero />
-            <Card>
-                <UsersPerYearChart />
-            </Card>
+        <>
+            <h1 className="text-purple-500">Hola fem hack</h1>
+
+            <UsersPerYearChart />
+
             <TopCountries />
-        </div>
+            <WorldMap />
+        </>
     );
 }
 
