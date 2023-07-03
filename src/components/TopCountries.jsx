@@ -43,7 +43,7 @@ export const TopCountries = () => {
         }
     }, [selectedYear]);
     return (
-        <Card className="my-10 drop-shadow-md" decoration="bottom" decorationColor="indigo">
+        <Card className="drop-shadow-md" decoration="bottom" decorationColor="indigo">
             <div className="flex justify-between gap-6 md:flex-row flex-col items-center">
                 <Title>
                     <Icon icon={TrendingUpIcon} variant="solid" color="purple" className="mr-3" />
