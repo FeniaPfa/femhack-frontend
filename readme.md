@@ -54,6 +54,7 @@ git clone https://github.com/FeniaPfa/femhack-frontend.git
 -   react-dom: ^18.2.0
 -   react-simple-maps: ^3.0.0
 -   react-tooltip: ^5.16.1
+-   react-awesome-reveal: ^4.2.5
 
 ## Dev Dependencies
 
@@ -89,6 +90,7 @@ git clone https://github.com/FeniaPfa/femhack-frontend.git
 
 -   Search for animation libraries
 -   Enable animations in Tremor
+-   Add custom css transitions to components
 
 ### Task 3:
 
