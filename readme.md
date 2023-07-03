@@ -6,6 +6,8 @@
 
 A dynamic, visually appealing and user-friendly web dashboard has been created. The application successfully integrates with an external API to pull real-time data, and incorporates responsive design principles to ensure compatibility across various screen sizes.
 
+![Screencap](https://github.com/FeniaPfa/femhack-frontend/blob/dev/src/assets/Animation.gif?raw=true)
+
 ## 🛠 Technologies
 
 ![VITE](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
@@ -22,7 +24,7 @@ A dynamic, visually appealing and user-friendly web dashboard has been created. 
 ```
 git clone https://github.com/FeniaPfa/femhack-frontend.git
 ```
- 
+
 -   Install dependencies
 
 ```bash
@@ -41,7 +43,6 @@ git clone https://github.com/FeniaPfa/femhack-frontend.git
 ```bash
   npm run dev
 ```
-
 
 ## Dependencies
 
@@ -69,45 +70,48 @@ git clone https://github.com/FeniaPfa/femhack-frontend.git
 -   vite: ^4.3.9
 
 ## Work procces of each task:
+
 ### Task 1:
-- Clone the repository and follow the directions in the repository
-- Set up the backend
-- Check API data with Postman
-- Search for libraries to use charts
-- Create the project with Vite and React
-- Install axios for data fetching from the API
-- Write code to fetch endpoints and get data
-- Install Tremor and Tailwind to use the charts in Tremor library
-- Read Tremor documentation
-- Format the data from the endpoints to use in the charts
-- Use Tremor components to style the ui and implement the charts components
+
+-   Clone the repository and follow the directions in the repository
+-   Set up the backend
+-   Check API data with Postman
+-   Search for libraries to use charts
+-   Create the project with Vite and React
+-   Install axios for data fetching from the API
+-   Write code to fetch endpoints and get data
+-   Install Tremor and Tailwind to use the charts in Tremor library
+-   Read Tremor documentation
+-   Format the data from the endpoints to use in the charts
+-   Use Tremor components to style the ui and implement the charts components
 
 ### Task 2:
 
-- Search for animation libraries
-- Enable animations in Tremor
+-   Search for animation libraries
+-   Enable animations in Tremor
 
 ### Task 3:
-- Search libraries that had choropleth maps charts
-- Install React Simple Maps , d3-scale and React Tootip
-- Read the documentation and examples
--Write code to get dinamic fetch with a Select component to get the data by the selected year
-- Format the api response to implement the map chart
-- Write the code to use the data in the map chart
-- Style the component with Tremor and Tailwind
+
+-   Search libraries that had choropleth maps charts
+-   Install React Simple Maps , d3-scale and React Tootip
+-   Read the documentation and examples
+    -Write code to get dinamic fetch with a Select component to get the data by the selected year
+-   Format the api response to implement the map chart
+-   Write the code to use the data in the map chart
+-   Style the component with Tremor and Tailwind
 
 ## What we've learned
 
- - We've gained a deeper understanding of how to work with and manipulate data in order to present it in a meaningful way. This involved learning how to parse raw data, transform it, and structure it in a way that would be suitable for a chart.
- 
-- I've learnt to use charting libraries effectively to display data in a user-friendly and visually appealing manner. Understanding how to use different types of charts based on the nature of the data was an important part of this process.
+-   We've gained a deeper understanding of how to work with and manipulate data in order to present it in a meaningful way. This involved learning how to parse raw data, transform it, and structure it in a way that would be suitable for a chart.
+
+-   I've learnt to use charting libraries effectively to display data in a user-friendly and visually appealing manner. Understanding how to use different types of charts based on the nature of the data was an important part of this process.
 
 ## What follows
-- We plan to explore more sophisticated data visualization techniques and chart types. This will enable us to effectively present a broader range of data in future projects.
-- Completing this challenge was a significant achievement for us. It opened our eyes to the power and importance of data visualization for make an impact. And it was a lot of fun! As a team, we are excited to continue learning and improving our skills in this area. Our aim is to leverage these new skills in our future projects.
+
+-   We plan to explore more sophisticated data visualization techniques and chart types. This will enable us to effectively present a broader range of data in future projects.
+-   Completing this challenge was a significant achievement for us. It opened our eyes to the power and importance of data visualization for make an impact. And it was a lot of fun! As a team, we are excited to continue learning and improving our skills in this area. Our aim is to leverage these new skills in our future projects.
 
 ## Authors
 
 | [<img src="https://avatars.githubusercontent.com/u/70548022?v=4" width=50><br><sub>Fernanda Aguilar</sub>](https://github.com/feniapfa) | [<img src="https://avatars.githubusercontent.com/u/107328919?v=4" width=50><br><sub>Trinidad Martí</sub>](https://github.com/TrinidadMartiG) |
 | :-------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------: |
-
