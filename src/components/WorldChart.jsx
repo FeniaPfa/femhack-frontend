@@ -12,7 +12,7 @@ const MapChart = ({ setTooltipContent, data }) => {
 
     const colorScale = scaleLinear()
         .domain([Math.min(...users), Math.max(...users)])
-        .range(['#c4b5fd', '#6d28d9']);
+        .range(['#cffafe', '#6b21a8']);
     return (
         <div className="text-center lg:-my-28">
             <ComposableMap
