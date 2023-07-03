@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { endPoints } from '../constant/API';
 import axios from 'axios';
 import { BarList, Bold, Card, Flex, Icon, Select, SelectItem, Text, Title } from '@tremor/react';
-import { Layout } from './Layout';
 import { numberFormatter, reverseArray } from '../constant/utils';
 import { years } from '../constant/years';
 import { TrendingUpIcon } from '@heroicons/react/outline';
@@ -44,37 +43,35 @@ export const TopCountries = () => {
         }
     }, [selectedYear]);
     return (
-        <Layout>
-            <Card className="my-10 drop-shadow-md" decoration="bottom" decorationColor="indigo">
-                <Flex className="space-x-8">
-                    <Title>
-                        <Icon icon={TrendingUpIcon} variant="solid" color="purple" className="mr-3" />
-                        Top 10 countries
-                    </Title>
-                    <Select
-                        onValueChange={setSelectedYear}
-                        value={selectedYear}
-                        placeholder="Year Selection"
-                        className="max-w-xs"
-                        // onChange={handleChange}
-                    >
-                        {reverseArray(years).map((category) => (
-                            <SelectItem key={category} value={category}>
-                                {category}
-                            </SelectItem>
-                        ))}
-                    </Select>
-                </Flex>
-                <Flex className="mt-8">
-                    <Text>
-                        <Bold>Country</Bold>
-                    </Text>
-                    <Text>
-                        <Bold>Users</Bold>
-                    </Text>
-                </Flex>
-                <BarList data={data} color="purple" className="mt-4" showAnimation={true} valueFormatter={numberFormatter} />
-            </Card>
-        </Layout>
+        <Card className="my-10 drop-shadow-md" decoration="bottom" decorationColor="indigo">
+            <div className="flex justify-between gap-6 md:flex-row flex-col items-center">
+                <Title>
+                    <Icon icon={TrendingUpIcon} variant="solid" color="purple" className="mr-3" />
+                    Top 10 countries
+                </Title>
+                <Select
+                    onValueChange={setSelectedYear}
+                    value={selectedYear}
+                    placeholder="Year Selection"
+                    className="max-w-xs"
+                    // onChange={handleChange}
+                >
+                    {reverseArray(years).map((category) => (
+                        <SelectItem key={category} value={category}>
+                            {category}
+                        </SelectItem>
+                    ))}
+                </Select>
+            </div>
+            <Flex className="mt-8">
+                <Text>
+                    <Bold>Country</Bold>
+                </Text>
+                <Text>
+                    <Bold>Users</Bold>
+                </Text>
+            </Flex>
+            <BarList data={data} color="purple" className="mt-4" showAnimation={true} valueFormatter={numberFormatter} />
+        </Card>
     );
 };

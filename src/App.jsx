@@ -2,18 +2,21 @@ import { UsersPerYearChart } from './components/UsersPerYearChart';
 import { TopCountries } from './components/TopCountries';
 import { UsersByCountry } from './components/UsersByCountry';
 import { WorldMap } from './components/WorldMap';
+import { Hero } from './components/Hero';
+import { Layout } from './components/Layout';
 
 function App() {
     return (
-        <>
-            <h1 className="text-purple-500">Hola fem hack</h1>
+        <div className="main h-full">
+            <Layout>
+                <Hero />
+                <UsersPerYearChart />
 
-            <UsersPerYearChart />
-
-            <UsersByCountry />
-            <TopCountries />
-            <WorldMap />
-        </>
+                <UsersByCountry />
+                <TopCountries />
+                <WorldMap />
+            </Layout>
+        </div>
     );
 }
 
